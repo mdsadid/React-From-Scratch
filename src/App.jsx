@@ -1,9 +1,13 @@
-const tech = 'React, Tailwind CSS and Vite';
+import {PageWrapper} from "./components/PageWrapper";
+import {Container} from "./components/Container";
+import {Header} from "./components/Header";
 
 export function App() {
   return (
-    <div>
-      <h2 className="font-mono text-4xl">{tech}</h2>
-    </div>
+    <PageWrapper>
+      <Container>
+        <Header/>
+      </Container>
+    </PageWrapper>
   );
 }
