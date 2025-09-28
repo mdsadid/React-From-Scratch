@@ -5,6 +5,7 @@ import {Search} from "./components/Search";
 import {ShortList} from "./components/ShortList";
 import {PuppiesList} from "./components/PuppiesList";
 import {NewPuppyForm} from "./components/NewPuppyForm";
+import {puppies} from "./data/puppies";
 
 export function App() {
   return (
@@ -24,7 +25,7 @@ function Main() {
         <Search/>
         <ShortList/>
       </div>
-      <PuppiesList/>
+      <PuppiesList puppies={puppies}/>
       <NewPuppyForm/>
     </main>
   );
