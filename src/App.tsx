@@ -6,6 +6,9 @@ import {ShortList} from "./components/ShortList";
 import {PuppiesList} from "./components/PuppiesList";
 import {NewPuppyForm} from "./components/NewPuppyForm";
 import {puppies} from "./data/puppies";
+import {useState} from "react";
+import {type Puppy} from "./types";
+import {LikedContext} from "./context/liked-context";
 
 export function App() {
   return (
@@ -19,13 +22,17 @@ export function App() {
 }
 
 function Main() {
+  const [liked, setLiked] = useState<Puppy['id'][]>([]);
+
   return (
     <main>
-      <div className="mt-24 grid gap-8 sm:grid-cols-2">
-        <Search/>
-        <ShortList/>
-      </div>
-      <PuppiesList puppies={puppies}/>
+      <LikedContext value={{liked, setLiked}}>
+        <div className="mt-24 grid gap-8 sm:grid-cols-2">
+          <Search/>
+          <ShortList puppies={puppies}/>
+        </div>
+        <PuppiesList puppies={puppies}/>
+      </LikedContext>
       <NewPuppyForm/>
     </main>
   );

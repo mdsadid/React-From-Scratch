@@ -27,7 +27,7 @@ function PuppyCard({puppy}: { puppy: Puppy }) {
           <span className="text-slate-300">·</span>
           <p className="text-slate-500">{puppy.trait}</p>
         </div>
-        <LikeToggle puppy={puppy}/>
+        <LikeToggle id={puppy.id}/>
       </div>
     </li>
   );
