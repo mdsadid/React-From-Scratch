@@ -23,15 +23,16 @@ export function App() {
 
 function Main() {
   const [liked, setLiked] = useState<Puppy['id'][]>([]);
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   return (
     <main>
       <LikedContext value={{liked, setLiked}}>
         <div className="mt-24 grid gap-8 sm:grid-cols-2">
-          <Search/>
+          <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
           <ShortList puppies={puppies}/>
         </div>
-        <PuppiesList puppies={puppies}/>
+        <PuppiesList searchQuery={searchQuery} puppies={puppies}/>
       </LikedContext>
       <NewPuppyForm/>
     </main>
