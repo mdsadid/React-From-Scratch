@@ -1,7 +1,10 @@
-import {Dispatch, SetStateAction, useRef} from "react";
-import {Delete} from "lucide-react";
+import { Dispatch, SetStateAction, useRef } from "react";
+import { Delete } from "lucide-react";
 
-export function Search({searchQuery, setSearchQuery}: {
+export function Search({
+  searchQuery,
+  setSearchQuery,
+}: {
   searchQuery: string;
   setSearchQuery: Dispatch<SetStateAction<string>>;
 }) {
@@ -26,11 +29,11 @@ export function Search({searchQuery, setSearchQuery}: {
         <button
           className="inline-block rounded bg-cyan-300 px-4 py-2 !pr-3 !pl-2.5 font-medium text-cyan-900 hover:bg-cyan-200 focus:ring-2 focus:ring-cyan-500 focus:outline-none"
           onClick={() => {
-            setSearchQuery('');
+            setSearchQuery("");
             inputRef.current.focus();
           }}
         >
-          <Delete/>
+          <Delete />
         </button>
       </div>
     </div>

@@ -1,29 +1,29 @@
-import {type Puppy} from "../types";
-import {LikeToggle} from "./LikeToggle";
+import { type Puppy } from "../types";
+import { LikeToggle } from "./LikeToggle";
+import { usePuppies } from "../context/puppies-context";
 
-export function PuppiesList({searchQuery, puppies}: {
-  searchQuery: string,
-  puppies: Puppy[]
-}) {
+export function PuppiesList({ searchQuery }: { searchQuery: string }) {
+  const { puppies } = usePuppies();
+
   return (
     <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {
-        puppies
-          .filter((puppy) => puppy.trait.toLowerCase().includes(searchQuery.toLowerCase()))
-          .map((puppy) => (
-            <PuppyCard key={puppy.id} puppy={puppy}/>
-          ))
-      }
+      {puppies
+        .filter((puppy) =>
+          puppy.trait.toLowerCase().includes(searchQuery.toLowerCase()),
+        )
+        .map((puppy) => (
+          <PuppyCard key={puppy.id} puppy={puppy} />
+        ))}
     </ul>
   );
 }
 
-function PuppyCard({puppy}: { puppy: Puppy }) {
+function PuppyCard({ puppy }: { puppy: Puppy }) {
   return (
     <li className="overflow-clip rounded-lg bg-white shadow-md ring ring-black/5 hover:-translate-y-0.5">
       <img
         className="aspect-square object-cover"
-        src={puppy.imagePath}
+        src={puppy.imageUrl}
         alt={puppy.name}
       />
       <div className="gap flex items-center justify-between p-4 text-sm">
@@ -32,7 +32,7 @@ function PuppyCard({puppy}: { puppy: Puppy }) {
           <span className="text-slate-300">·</span>
           <p className="text-slate-500">{puppy.trait}</p>
         </div>
-        <LikeToggle id={puppy.id}/>
+        <LikeToggle puppy={puppy} />
       </div>
     </li>
   );
